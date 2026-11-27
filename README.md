@@ -163,7 +163,7 @@ this project.
 
 - Category: Web Chrome with Gemini Nano (Hybrid — on-device preferred, cloud fallback)
 - Live URL: https://doggy8088.github.io/buildhybridai-2026-11/
-- Demo video (≤ 3 min, public YouTube, English or English subtitles): _to be added_
+- Demo video (≤ 3 min, public YouTube, English narration + subtitles): https://youtu.be/gVJ-qqeh_cI
 
 ## License
 
