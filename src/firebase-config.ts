@@ -22,7 +22,8 @@ export const firebaseConfig = {
 } as const;
 
 /** App Check — reCAPTCHA Enterprise site key（公開金鑰，可放前端）。 */
-export const recaptchaEnterpriseSiteKey = "6LdTJDQuAAAAAAX5Ht3dZAmrdUArcX-UH2n2zF7y";
+export const recaptchaEnterpriseSiteKey: string =
+  "6LdTJDQuAAAAAAX5Ht3dZAmrdUArcX-UH2n2zF7y";
 
 /**
  * 使用的 Gemini 模型。
