@@ -6,9 +6,9 @@
  *
  * 已填入（2026-11-27，專案 bilingual-summary-assistant）：
  *   - apiKey / authDomain / projectId / storageBucket / messagingSenderId / appId
- * 尚未填入：
- *   - recaptchaV3SiteKey（App Check 用的 reCAPTCHA v3 site key，公開金鑰）
- *     需完成 AI Logic 精靈第 2 步 / App Check 設定後取得再填入。
+ *   - recaptchaEnterpriseSiteKey（App Check 用的 reCAPTCHA Enterprise site key，
+ *     公開金鑰；App Check 已於 Firebase Console 以此金鑰註冊完成，網域含
+ *     web.app / firebaseapp.com / localhost）
  *
  * 詳細步驟見上層目錄的 SETUP-FOR-WILL.md，或本 repo 的 README.md。
  */
@@ -21,8 +21,8 @@ export const firebaseConfig = {
   appId: "1:38078002732:web:281fc1346e548ad82fc389",
 } as const;
 
-/** App Check — reCAPTCHA v3 site key（公開金鑰，可放前端）。 */
-export const recaptchaV3SiteKey = "YOUR_RECAPTCHA_V3_SITE_KEY";
+/** App Check — reCAPTCHA Enterprise site key（公開金鑰，可放前端）。 */
+export const recaptchaEnterpriseSiteKey = "6LdTJDQuAAAAAAX5Ht3dZAmrdUArcX-UH2n2zF7y";
 
 /**
  * 使用的 Gemini 模型。
@@ -38,6 +38,6 @@ export function isFirebaseConfigured(): boolean {
     !firebaseConfig.apiKey.startsWith("YOUR_") &&
     !firebaseConfig.projectId.startsWith("YOUR_") &&
     !firebaseConfig.appId.startsWith("YOUR_") &&
-    recaptchaV3SiteKey !== "YOUR_RECAPTCHA_V3_SITE_KEY"
+    recaptchaEnterpriseSiteKey !== "YOUR_RECAPTCHA_ENTERPRISE_SITE_KEY"
   );
 }

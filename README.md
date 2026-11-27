@@ -27,9 +27,9 @@ All AI Logic code lives in [`src/ai.ts`](src/ai.ts) and the configuration in
 
 2. **Enable App Check** (required by Firebase AI Logic to protect the Gemini API)
    ```ts
-   import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
+   import { initializeAppCheck, ReCaptchaEnterpriseProvider } from "firebase/app-check";
    initializeAppCheck(app, {
-     provider: new ReCaptchaV3Provider(recaptchaV3SiteKey),
+     provider: new ReCaptchaEnterpriseProvider(recaptchaEnterpriseSiteKey),
      isTokenAutoRefreshEnabled: true,
    });
    ```
@@ -114,11 +114,11 @@ Edit [`src/firebase-config.ts`](src/firebase-config.ts) and replace:
 | `storageBucket` | Same as above |
 | `messagingSenderId` | Same as above |
 | `appId` | Same as above |
-| `recaptchaV3SiteKey` | reCAPTCHA v3 site key registered for App Check (public key) |
+| `recaptchaEnterpriseSiteKey` | reCAPTCHA Enterprise site key registered for App Check (public key) |
 | `modelName` (optional) | Any model your project can access — see supported models doc |
 
 Full step-by-step Firebase Console instructions (create project, enable
-AI Logic, register a Web App, set up App Check with reCAPTCHA v3, register a
+AI Logic, register a Web App, set up App Check with reCAPTCHA Enterprise, register a
 debug token for localhost) are in the maintainer setup note that accompanies
 this project.
 

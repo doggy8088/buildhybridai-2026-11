@@ -85,7 +85,7 @@ const configBanner = must<HTMLElement>("#configBanner");
 if (!isFirebaseConfigured()) {
   configBanner.hidden = false;
   configBanner.textContent =
-    "提示：Firebase 尚未設定。目前是展示模式，請先依 README 在 src/firebase-config.ts 填入你的 Firebase 設定與 reCAPTCHA v3 site key，才能實際呼叫 Firebase AI Logic。";
+    "提示：Firebase 尚未設定。目前是展示模式，請先依 README 在 src/firebase-config.ts 填入你的 Firebase 設定與 reCAPTCHA Enterprise site key，才能實際呼叫 Firebase AI Logic。";
 }
 
 function updateMeta(): void {

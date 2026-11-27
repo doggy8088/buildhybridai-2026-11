@@ -1,5 +1,5 @@
 import { initializeApp, type FirebaseApp } from "firebase/app";
-import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
+import { initializeAppCheck, ReCaptchaEnterpriseProvider } from "firebase/app-check";
 import {
   getAI,
   getGenerativeModel,
@@ -11,7 +11,7 @@ import {
   firebaseConfig,
   isFirebaseConfigured,
   modelName,
-  recaptchaV3SiteKey,
+  recaptchaEnterpriseSiteKey,
 } from "./firebase-config";
 
 /**
@@ -20,7 +20,7 @@ import {
  * 本專案真的透過 Firebase AI Logic JS SDK 呼叫 Gemini：
  *
  *   1. initializeApp(firebaseConfig)            — 初始化 Firebase App
- *   2. initializeAppCheck(app, ReCaptchaV3)     — 啟用 App Check 保護 API
+ *   2. initializeAppCheck(app, ReCaptchaEnterprise)     — 啟用 App Check 保護 API
  *   3. getAI(app, { backend: GoogleAIBackend }) — 取得 AI Logic 服務
  *      （Gemini Developer API 後端，並啟用 limited-use App Check tokens
  *       以支援 replay protection）
@@ -51,9 +51,9 @@ function getFirebaseApp(): FirebaseApp {
       true;
   }
 
-  // 啟用 App Check（reCAPTCHA v3）— 必須在呼叫任何 Firebase 服務之前初始化。
+  // 啟用 App Check（reCAPTCHA Enterprise）— 必須在呼叫任何 Firebase 服務之前初始化。
   initializeAppCheck(app, {
-    provider: new ReCaptchaV3Provider(recaptchaV3SiteKey),
+    provider: new ReCaptchaEnterpriseProvider(recaptchaEnterpriseSiteKey),
     isTokenAutoRefreshEnabled: true,
   });
 
@@ -178,7 +178,7 @@ export async function streamSummary(
 ): Promise<SummaryResult> {
   if (!isFirebaseConfigured()) {
     throw new Error(
-      "Firebase 尚未設定：請先在 src/firebase-config.ts 填入你的 Firebase Web App 設定與 reCAPTCHA v3 site key（步驟見 README / SETUP-FOR-WILL.md）。",
+      "Firebase 尚未設定：請先在 src/firebase-config.ts 填入你的 Firebase Web App 設定與 reCAPTCHA Enterprise site key（步驟見 README / SETUP-FOR-WILL.md）。",
     );
   }
 
