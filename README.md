@@ -51,7 +51,7 @@ All AI Logic code lives in [`src/ai.ts`](src/ai.ts) and the configuration in
 4. **Create a hybrid model instance** — this is the Hybrid AI core of the app:
    ```ts
    const model = getGenerativeModel(ai, {
-     model: "gemini-4-hydrogen", // configurable in src/firebase-config.ts
+     model: "gemini-3.5-flash-lite", // configurable in src/firebase-config.ts
      mode: InferenceMode.PREFER_ON_DEVICE,
    });
    ```

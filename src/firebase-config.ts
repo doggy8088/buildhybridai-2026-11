@@ -26,12 +26,12 @@ export const recaptchaEnterpriseSiteKey: string =
   "6LdTJDQuAAAAAAX5Ht3dZAmrdUArcX-UH2n2zF7y";
 
 /**
- * 使用的 Gemini 模型。
- * 預設值為 Firebase AI Logic 官方文件目前的穩定版範例模型。
- * 若你的專案尚未開通此模型，可在 Firebase AI Logic 文件的
- * 「supported models」頁面改選任一可用的 Flash 模型。
+ * 使用的 Gemini 模型（雲端 fallback 模型；裝置端可用時優先用 Gemini Nano）。
+ * 2026-11-27 實測：原預設 gemini-4-hydrogen 在雲端 fallback 時被 SDK 對應到
+ * gemini-2.5-flash-lite，該模型已對新用戶停用（404），依錯誤訊息建議改用
+ * gemini-3.5-flash-lite。
  */
-export const modelName = "gemini-4-hydrogen";
+export const modelName = "gemini-3.5-flash-lite";
 
 /** 檢查設定是否仍為佔位值（尚未填入真實設定）。 */
 export function isFirebaseConfigured(): boolean {
