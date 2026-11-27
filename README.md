@@ -51,9 +51,13 @@ All AI Logic code lives in [`src/ai.ts`](src/ai.ts) and the configuration in
 4. **Create a hybrid model instance** — this is the Hybrid AI core of the app:
    ```ts
    const model = getGenerativeModel(ai, {
-     model: "gemini-3.5-flash-lite", // configurable in src/firebase-config.ts
      mode: InferenceMode.PREFER_ON_DEVICE,
+     inCloudParams: { model: "gemini-3.5-flash-lite" }, // configurable in src/firebase-config.ts
    });
+   ```
+   Note: in hybrid mode the SDK ignores top-level `model`; the cloud model
+   must be set via `inCloudParams` (otherwise the SDK falls back to its
+   hard-coded default cloud model).
    ```
    `PREFER_ON_DEVICE` means: on Chrome desktop, prefer the on-device
    **Gemini Nano** model via the Prompt API; if it is unavailable, fall back

@@ -24,7 +24,7 @@ import {
  *   3. getAI(app, { backend: GoogleAIBackend }) — 取得 AI Logic 服務
  *      （Gemini Developer API 後端，並啟用 limited-use App Check tokens
  *       以支援 replay protection）
- *   4. getGenerativeModel(ai, { model, mode })  — 建立 GenerativeModel
+ *   4. getGenerativeModel(ai, { mode, inCloudParams })  — 建立 GenerativeModel
  *      mode = InferenceMode.PREFER_ON_DEVICE：
  *      在 Chrome 桌面版優先使用裝置端 Gemini Nano（on-device），
  *      不可用時自動 fallback 到雲端 Gemini 模型 — 這就是 Hybrid AI。
@@ -73,12 +73,19 @@ function getModel(): GenerativeModel {
   });
 
   // Hybrid 推論：優先裝置端 Gemini Nano，不可用時 fallback 雲端模型。
+  // 注意（SDK 行為，2026-11-27 實測確認）：hybrid 模式下，getGenerativeModel
+  // 頂層的 model / generationConfig 會被忽略，雲端模型必須放在 inCloudParams；
+  // 若未提供 inCloudParams，SDK 會用寫死的預設雲端模型
+  // DEFAULT_HYBRID_IN_CLOUD_MODEL（gemini-2.5-flash-lite，該模型已對新用戶
+  // 停用、呼叫會回 404）。
   const model = getGenerativeModel(ai, {
-    model: modelName,
     mode: InferenceMode.PREFER_ON_DEVICE,
-    generationConfig: {
-      temperature: 0.4,
-      maxOutputTokens: 2048,
+    inCloudParams: {
+      model: modelName,
+      generationConfig: {
+        temperature: 0.4,
+        maxOutputTokens: 2048,
+      },
     },
   });
 
