@@ -58,7 +58,6 @@ All AI Logic code lives in [`src/ai.ts`](src/ai.ts) and the configuration in
    Note: in hybrid mode the SDK ignores top-level `model`; the cloud model
    must be set via `inCloudParams` (otherwise the SDK falls back to its
    hard-coded default cloud model).
-   ```
    `PREFER_ON_DEVICE` means: on Chrome desktop, prefer the on-device
    **Gemini Nano** model via the Prompt API; if it is unavailable, fall back
    seamlessly to the cloud-hosted Gemini model. Before sending a prompt, the
@@ -106,7 +105,10 @@ npm run preview
 
 ## Setup — what YOU must fill in
 
-The repo ships with placeholder values only. **No real keys are committed.**
+This repo's `src/firebase-config.ts` already contains the maintainer's own
+Firebase Web config for the live deployment above (a Web config is a project
+identifier, not a secret — protection comes from App Check). If you fork this
+project, replace these values with your own:
 
 Edit [`src/firebase-config.ts`](src/firebase-config.ts) and replace:
 
@@ -160,7 +162,7 @@ this project.
 ## Demo & submission notes (#BuildHybridAI 2026)
 
 - Category: Web Chrome with Gemini Nano (Hybrid — on-device preferred, cloud fallback)
-- Live URL: _to be added after deployment_
+- Live URL: https://doggy8088.github.io/buildhybridai-2026-11/
 - Demo video (≤ 3 min, public YouTube, English or English subtitles): _to be added_
 
 ## License
