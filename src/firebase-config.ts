@@ -1,28 +1,24 @@
 /**
- * Firebase 設定 — 集中管理，全部使用佔位值。
+ * Firebase 設定 — 集中管理。
  *
- * ⚠️ 不要把真實金鑰以外的敏感資訊提交到公開 repo。
  * Firebase Web config（apiKey 等）本身是專案識別資訊，不是密鑰，
  * 真正的保護靠 Firebase App Check + API 限制（見 SETUP 說明）。
  *
- * Will 需要填入的欄位（從 Firebase Console > 專案設定 > 您的應用程式 > Web App 取得）：
- *   - apiKey
- *   - authDomain
- *   - projectId
- *   - storageBucket
- *   - messagingSenderId
- *   - appId
+ * 已填入（2026-11-27，專案 bilingual-summary-assistant）：
+ *   - apiKey / authDomain / projectId / storageBucket / messagingSenderId / appId
+ * 尚未填入：
  *   - recaptchaV3SiteKey（App Check 用的 reCAPTCHA v3 site key，公開金鑰）
+ *     需完成 AI Logic 精靈第 2 步 / App Check 設定後取得再填入。
  *
  * 詳細步驟見上層目錄的 SETUP-FOR-WILL.md，或本 repo 的 README.md。
  */
 export const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.firebasestorage.app",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID",
+  apiKey: "AIzaSyArWZk8P0Ltt0J38Xdlud-TZn3SbXiw9aM",
+  authDomain: "bilingual-summary-assistant.firebaseapp.com",
+  projectId: "bilingual-summary-assistant",
+  storageBucket: "bilingual-summary-assistant.firebasestorage.app",
+  messagingSenderId: "38078002732",
+  appId: "1:38078002732:web:281fc1346e548ad82fc389",
 } as const;
 
 /** App Check — reCAPTCHA v3 site key（公開金鑰，可放前端）。 */
